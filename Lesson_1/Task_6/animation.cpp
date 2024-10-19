@@ -3,7 +3,8 @@
 #include <chrono>
 using namespace std;
 
-void clear(){
+void clear(){ // Функция для очистки терминала
+    
     #ifdef _WIN32
         system("cls"); 
     #else
@@ -11,92 +12,118 @@ void clear(){
     #endif
 }
 
-void tri(char type){
-    int h = 5;
-    int nstar, nspac;
+void delay(int deltime){ // Функция задержки
+    
+    this_thread::sleep_for(chrono::milliseconds(deltime));
+    clear();
+    
+}
+
+void tri(int hgt, char type){ // Функция создания треугольника
+    
+    int nstar, nspace;
     switch(type){
         case 'n':
             nstar = 1;
-            nspac = h - 1;
-            while(h > 0){
-            for (int i = 0; i < nstar; i++){
-                cout << "*";
-            }
-                h = h - 1;
+            while(hgt > 0){
+                for (int i = 0; i < nstar; i++){
+                    cout << "*";
+                }
+                
+                hgt--;
                 cout << endl;
-                nspac = nspac - 1;
-                nstar = nstar + 1;
+                nstar++;
             }
-            type = '1'; //90градусів
             break;
         case '1':
             nstar = 1;
-            nspac = h - 1;
-            while(h > 0){
-            for (int i = 0; i < nspac; i++){
-                cout << " ";
-            }
-            for (int i = 0; i < nstar; i++){
-                cout << "*";
-            }
-                h = h - 1;
+            nspace = hgt;
+            while(hgt > 0){
+                for (int i = 1; i < nspace; i++){
+                    cout << " ";
+                }
+                for (int i = 0; i < nstar; i++){
+                    cout << "*";
+                }
+                hgt--;
                 cout << endl;
-                nspac = nspac - 1;
-                nstar = nstar + 1;
+                nspace--;
+                nstar++;
             }
-            type = '2'; //180
             break;
         case '2':
-            nstar = h;
-            nspac = 0;
-            while(h > 0){
-            for (int i = 0; i < nspac; i++){
-                cout << " ";
-            }
-            for (int i = 0; i < nstar; i++){
-                cout << "*";
-            }
-                h = h - 1;
+            nstar = hgt;
+            nspace = 0;
+            while(hgt > 0){
+                for (int i = 0; i < nspace; i++){
+                    cout << " ";
+                }
+                for (int i = 0; i < nstar; i++){
+                    cout << "*";
+                }
+                hgt--;
                 cout << endl;
-                nspac = nspac + 1;
-                nstar = nstar - 1;
+                nspace++;
+                nstar--;
             }
-            
-            type = '3'; //270
             break;
         case '3':
-            nstar = h;
-            nspac = 0;
-            while(h > 0){
-            for (int i = 0; i < nstar; i++){
-                cout << "*";
-            }
-            for (int i = 0; i < nspac; i++){
-                cout << " ";
-            }
-                h = h - 1;
+            nstar = hgt;
+            nspace = 0;
+            while(hgt > 0){
+                for (int i = 0; i < nstar; i++){
+                    cout << "*";
+                }
+                for (int i = 0; i < nspace; i++){
+                    cout << " ";
+                }
+                
+                hgt--;
                 cout << endl;
-                nspac = nspac + 1;
-                nstar = nstar - 1;
+                nspace++;
+                nstar--;
             }
-            type = 'n'; //0
             break;
-            }
     }
-void delay(){
-    this_thread::sleep_for(chrono::milliseconds(500));
-    clear();
 }
 
 int main() {
-    char type = 'n';
-    for(int i = 0; i < 19; i++) {
-        tri(type);
-        delay();
-        if (type == 'n') type = '1';
-        else if (type == '1') type = '2';
-        else if (type == '2') type = '3';
-        else type = 'n';
+    
+    cout << "Введи высоту триугольника (целое число > 2) - "; // Ввод размера
+    int hgt;
+    cin >> hgt;
+    cout << "Введи время задержки (в миллисекундах > 100) - "; // Ввод задержки
+    int deltime;
+    cin >> deltime;
+    clear();
+    
+    if (hgt <= 2 || deltime <= 99){ // Валидатор) - выучил слово на паре у Доринского
+        
+        cout << "Невалидные значения высоты или времени задержки ,_,";
+        return 1;
+        
+    }
+    
+    char type = 'n'; 
+    
+    for(int i = 0; i < 22; i++) {
+    
+        tri(hgt, type);
+        delay(deltime);
+        switch(type){ // Меняем триугольник
+            case 'n':
+                type = '1';
+                break;
+            case '1':
+                type = '2';
+                break;
+            case '2':
+                type = '3';
+                break;
+            case '3':
+                type = 'n';
+                break;
+        }
     }
     return 0;
 }
