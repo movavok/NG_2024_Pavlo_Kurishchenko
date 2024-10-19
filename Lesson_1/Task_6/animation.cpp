@@ -1,26 +1,16 @@
 #include <iostream>
-#include <thread>
-#include <chrono>
+#include <windows.h>
 using namespace std;
 
-void clear(){ // Функция для очистки терминала
-    
-    #ifdef _WIN32
-        system("cls"); 
-    #else
-        system("clear"); 
-    #endif
-}
-
 void delay(int deltime){ // Функция задержки
-    
-    this_thread::sleep_for(chrono::milliseconds(deltime));
-    clear();
-    
+
+    Sleep(deltime);
+    system("cls");
+
 }
 
 void tri(int hgt, char type){ // Функция создания треугольника
-    
+
     int nstar, nspace;
     switch(type){
         case 'n':
@@ -29,7 +19,7 @@ void tri(int hgt, char type){ // Функция создания треугол�
                 for (int i = 0; i < nstar; i++){
                     cout << "*";
                 }
-                
+
                 hgt--;
                 cout << endl;
                 nstar++;
@@ -77,7 +67,7 @@ void tri(int hgt, char type){ // Функция создания треугол�
                 for (int i = 0; i < nspace; i++){
                     cout << " ";
                 }
-                
+
                 hgt--;
                 cout << endl;
                 nspace++;
@@ -88,26 +78,26 @@ void tri(int hgt, char type){ // Функция создания треугол�
 }
 
 int main() {
-    
+
     cout << "Введи высоту триугольника (целое число > 2) - "; // Ввод размера
     int hgt;
     cin >> hgt;
     cout << "Введи время задержки (в миллисекундах > 100) - "; // Ввод задержки
     int deltime;
     cin >> deltime;
-    clear();
-    
+    system("cls");
+
     if (hgt <= 2 || deltime <= 99){ // Валидатор) - выучил слово на паре у Доринского
-        
+
         cout << "Невалидные значения высоты или времени задержки ,_,";
         return 1;
-        
+
     }
-    
-    char type = 'n'; 
-    
-    for(int i = 0; i < 22; i++) {
-    
+
+    char type = 'n';
+
+    for(int i = 0; i < 21; i++) {
+
         tri(hgt, type);
         delay(deltime);
         switch(type){ // Меняем триугольник
