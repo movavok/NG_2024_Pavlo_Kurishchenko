@@ -1,26 +1,20 @@
 #include <iostream>
-#include <windows.h>
 
 using namespace std;
 
 int main()
 {
-    double num[5];
+    int array[5];
 
-    for(int i = 0; i < 5; i++){
-
-        cout << "Enter number number " << i + 1 << " - ";
-        cin >> num[i];
-        system("cls");
-
+    for(int num = 1; num <= 5; num++){
+        cout << "Enter integer " << num << " - ";
+        cin >> array[num - 1];
     }
 
     cout << "That is your array: ";
-
-    for(int i = 0; i < 5; i++){
-
-        cout << num[i];
-        if(i < 4){
+    for(int num = 1; num <= 5; num++){
+        cout << array[num - 1];
+        if(num < 5){
             cout << ", ";
         }
     }

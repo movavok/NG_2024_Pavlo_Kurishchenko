@@ -4,30 +4,22 @@ using namespace std;
 
 int main()
 {
-    int num[5];
-    cout << "Enter a unsigned integer" << endl;
-    int max = 0;
+    int array[5];
+    cout << "Enter 5 natural numbers" << endl;
+    int max_num_rows = 0;
 
-    for(int i = 0; i < 5; i++){
-
-        cout << "Enter " << i + 1 << " value - ";
-        cin >> num[i];
-        if (max < num[i]){
-            max = num[i];
-        }
-
+    for(int num = 1; num <= 5; num++){
+        cout << "Enter " << num << " value - ";
+        cin >> array[num - 1];
+        if (max_num_rows < array[num - 1]) max_num_rows = array[num - 1];
     }
 
-    for(int i = 0; i < max; i++){
-        for(int j = 0; j < 5; j++){
-            if(num[j] - i > 0){
-                cout << "*";
-            }
-            else{
-                cout << " ";
-            }
+    for(int row = 0; row < max_num_rows; row++){
+        for(int colm = 0; colm < 5; colm++){
+            if(array[colm] - row > 0) cout << "*";
+            else cout << " ";
         }
-    cout << endl;
+        cout << endl;
     }
 
     return 0;

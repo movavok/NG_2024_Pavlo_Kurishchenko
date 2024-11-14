@@ -4,4 +4,4 @@ CONFIG -= app_bundle
 CONFIG -= qt
 
 SOURCES += \
-        Task_4\Measure.cpp
+    Task_2\Drawing.cpp
