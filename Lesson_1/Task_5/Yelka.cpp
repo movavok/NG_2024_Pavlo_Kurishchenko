@@ -1,34 +1,24 @@
 #include <iostream>
 using namespace std;
-
 int main() {
-    
-    int hgt; // переменная не в 1 символ)
-    cout << "Введи высоту елочки (целое число > 2) - ";
+
+    int hgt;
+    cout << "Enter the height of the Christmas tree (integer > 2) - ";
     cin >> hgt;
-    
-    if (hgt <= 2){ 
-        
-        cout << "Введи положительное целое число > 2";
+
+    if (hgt <= 2){
+        cout << "Enter a positive integer > 2";
         return 1;
-        
     }
-    
-    int nstar = 1;
-    int nspace = hgt - 1;
-    
-    while(hgt > 0, hgt--){ // скоротил
-    for (int i = 0; i < nspace; i++) cout << " ";
-    for (int i = 0; i < nstar; i++) cout << "*";
-    
-    nspace--;
-    nstar += 2;
-    cout << endl;
-    }
-    
-    for (int i = 1; i < (nstar - 1) / 2; i++) cout << " "; // вывел пенек с цыкла
-    cout << "*";
 
+    int nstar = 1, nspace = hgt--;
+
+    for (int i = 0; i < hgt; i++){
+        cout << string(nspace, ' ') << string(nstar, '*') << endl;
+        nspace--;
+        nstar += 2;
+    }
+
+    cout << string((nstar - 2) / 2, ' ') << "*" << endl;
     return 0;
-
 }

@@ -2,118 +2,55 @@
 #include <windows.h>
 using namespace std;
 
-void delay(int deltime){ // Функция задержки
-
+void cleaner(int deltime){
     Sleep(deltime);
     system("cls");
-
 }
 
-void tri(int hgt, char type){ // Функция создания треугольника
+void type0() {
+    cout << "*   " << endl;
+    cout << "**  " << endl;
+    cout << "*** " << endl;
+    cout << "****" << endl;
+}
 
-    int nstar, nspace;
-    switch(type){
-        case 'n':
-            nstar = 1;
-            while(hgt > 0){
-                for (int i = 0; i < nstar; i++){
-                    cout << "*";
-                }
+void type1() {
+    cout << "   *" << endl;
+    cout << "  **" << endl;
+    cout << " ***" << endl;
+    cout << "****" << endl;
+}
 
-                hgt--;
-                cout << endl;
-                nstar++;
-            }
-            break;
-        case '1':
-            nstar = 1;
-            nspace = hgt;
-            while(hgt > 0){
-                for (int i = 1; i < nspace; i++){
-                    cout << " ";
-                }
-                for (int i = 0; i < nstar; i++){
-                    cout << "*";
-                }
-                hgt--;
-                cout << endl;
-                nspace--;
-                nstar++;
-            }
-            break;
-        case '2':
-            nstar = hgt;
-            nspace = 0;
-            while(hgt > 0){
-                for (int i = 0; i < nspace; i++){
-                    cout << " ";
-                }
-                for (int i = 0; i < nstar; i++){
-                    cout << "*";
-                }
-                hgt--;
-                cout << endl;
-                nspace++;
-                nstar--;
-            }
-            break;
-        case '3':
-            nstar = hgt;
-            nspace = 0;
-            while(hgt > 0){
-                for (int i = 0; i < nstar; i++){
-                    cout << "*";
-                }
-                for (int i = 0; i < nspace; i++){
-                    cout << " ";
-                }
+void type2() {
+    cout << "****" << endl;
+    cout << " ***" << endl;
+    cout << "  **" << endl;
+    cout << "   *" << endl;
+}
 
-                hgt--;
-                cout << endl;
-                nspace++;
-                nstar--;
-            }
-            break;
-    }
+void type3() {
+    cout << "****" << endl;
+    cout << "*** " << endl;
+    cout << "**  " << endl;
+    cout << "*   " << endl;
 }
 
 int main() {
 
-    cout << "Введи высоту триугольника (целое число > 2) - "; // Ввод размера
-    int hgt;
-    cin >> hgt;
-    cout << "Введи время задержки (в миллисекундах > 100) - "; // Ввод задержки
-    int deltime;
-    cin >> deltime;
-    system("cls");
+    int deltime = 150;
+    char type = '0';
+    int iter = 0;
 
-    if (hgt <= 2 || deltime <= 99){ // Валидатор) - выучил слово на паре у Доринского
-
-        cout << "Невалидные значения высоты или времени задержки ,_,";
-        return 1;
-
-    }
-
-    char type = 'n';
-
-    for(int i = 0; i < 21; i++) {
-
-        tri(hgt, type);
-        delay(deltime);
-        switch(type){ // Меняем триугольник
-            case 'n':
-                type = '1';
-                break;
-            case '1':
-                type = '2';
-                break;
-            case '2':
-                type = '3';
-                break;
-            case '3':
-                type = 'n';
-                break;
-        }
+    while(iter < 10){
+        type0();
+        cleaner(deltime);
+        type1();
+        cleaner(deltime);
+        type2();
+        cleaner(deltime);
+        type3();
+        cleaner(deltime);
+        iter++;
     }
     return 0;
 }
