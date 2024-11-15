@@ -4,41 +4,28 @@ using namespace std;
 
 int main()
 {
-    int num[20];
+    int array[20];
     cout << "Enter a unsigned integer" << endl;
-    int max = 0;
-    int nsize = 0;
+    int max_int = 0;
+    int num_of_nums = 0;
 
-    for(int i = 0; i < 19; i++){
-
-        cout << "Enter " << i + 1 << " value - ";
-        cin >> num[i];
-        if (max < num[i]){
-            max = num[i];
-        }
-        if (num[i] < 0){
+    for(int num = 1; num <= 20; num++){
+        cout << "Enter " << num << " value - ";
+        cin >> array[num - 1];
+        if (max_int < array[num - 1]) max_int = array[num - 1];
+        if (array[num - 1] < 0){
             cout << "I don't like negative numbers.\n" << "Enter a unsigned integer\n";
-            i--;
+            num--;
             continue;
         }
-        if (num[i] == 0){
-            i = 19;
+        if (array[num - 1] == 0){
+            break;
         }
-        nsize++;
-
+        num_of_nums++;
     }
 
-    for(int i = 0; i < nsize - 1; i++){
-        for(int j = 0; j < (max - num[i]) / 2; j++){
-            cout << " ";
-        }
-        for(int j = 0; j < num[i]; j++){
-            cout << "*";
-        }
-
-        cout << endl;
-
+    for(int row = 0; row < num_of_nums; row++){
+        cout << string ((max_int - array[row]) / 2, ' ') << string (array[row], '*') << endl;
     }
-
     return 0;
 }

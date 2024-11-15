@@ -4,4 +4,4 @@ CONFIG -= app_bundle
 CONFIG -= qt
 
 SOURCES += \
-    Task_2\Drawing.cpp
+    Task_5\WordDetector.cpp

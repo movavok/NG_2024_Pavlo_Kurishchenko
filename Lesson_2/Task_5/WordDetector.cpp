@@ -11,22 +11,14 @@ int main()
     bool word = false;
     int count = 0;
 
-    for (int i = 0; i < line.length(); i++){
-
-        if ((line[i] >= 'A' && line[i] <= 'Z') || (line[i] >= 'a' && line[i] <= 'z')){
-
+    for (int sym_num = 0; sym_num < line.length(); sym_num++){
+        if ((line[sym_num] >= 'A' && line[sym_num] <= 'Z') || (line[sym_num] >= 'a' && line[sym_num] <= 'z')){
             if (!word){
-
                 count++;
                 word = true;
-
             }
         }
-        else{
-
-            word = false;
-
-        }
+        else word = false;
     }
 
     cout << "Count of the words: " << count << endl;

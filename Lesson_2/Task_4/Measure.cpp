@@ -9,18 +9,10 @@ int main()
     string line;
     getline(cin, line);
 
-    cout << "All ASCII characters:" << endl;
-
-    for (int i = 32; i < 127; i++) {
-        int narr = 0;
-        for (int j = 0; j < line.length(); j++){
-            if (static_cast<char>(i) == line[j]){
-                narr++;
-            }
-        }
-        if (narr > 0){
-            cout << static_cast<char>(i) << " : " << narr << endl;
-        }
+    for (int symbol = 32; symbol < 127; symbol++) {
+        int amn_of_syms = 0;
+        for (int sym_num = 0; sym_num < line.length(); sym_num++) if (static_cast<char>(symbol) == line[sym_num]) amn_of_syms++;
+        if (amn_of_syms > 0) cout << static_cast<char>(symbol) << " : " << amn_of_syms << endl;
     }
     return 0;
 }
